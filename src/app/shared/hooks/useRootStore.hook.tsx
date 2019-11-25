@@ -1,6 +1,6 @@
-import { useContext } from 'react';
+import { useContext } from "react";
 
-import RootStoreContext from '../context/rootStore.context';
+import RootStoreContext from "../context/rootStore.context";
 
 function useRootStore() {
   return useContext(RootStoreContext);

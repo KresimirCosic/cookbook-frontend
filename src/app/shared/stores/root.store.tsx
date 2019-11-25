@@ -1,9 +1,9 @@
-import { RouterState, RouterStore } from 'mobx-state-router';
+import { RouterState, RouterStore } from "mobx-state-router";
 
-import routes from '../routing/routes.routing';
-import UserInterfaceStore from './userInterface.store';
+import routes from "../routing/routes.routing";
+import UserInterfaceStore from "./userInterface.store";
 
-const notFound = new RouterState('notFound');
+const notFound = new RouterState("notFound");
 
 export default class RootStore {
   routerStore = new RouterStore(this, routes, notFound);

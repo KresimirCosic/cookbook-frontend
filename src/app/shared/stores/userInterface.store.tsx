@@ -1,5 +1,5 @@
-import { decorate, observable, computed, action } from 'mobx';
-import RootStore from './root.store';
+import { decorate, observable, computed, action } from "mobx";
+import RootStore from "./root.store";
 
 export default class UserInterfaceStore {
   overlay: boolean = false;

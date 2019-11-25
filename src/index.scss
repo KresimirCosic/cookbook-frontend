@@ -1,23 +1,23 @@
 // CSS libraries
-@import '~normalize.css/normalize.css';
+@import "~normalize.css/normalize.css";
 
 // Icons (provided by free IcoMoon)
-@import './app/styles/icons.scss';
+@import "./app/styles/icons.scss";
 
 // Technical
-@import './app/styles/variables';
-@import './app/styles/mixins';
+@import "./app/styles/variables";
+@import "./app/styles/mixins";
 
 // Generic
-@import './app/styles/globals';
-@import './app/styles/layout';
-@import './app/styles/temporary';
+@import "./app/styles/globals";
+@import "./app/styles/layout";
+@import "./app/styles/temporary";
 
 // Components
-@import './app/styles/components/header.component';
-@import './app/styles/components/footer.component';
-@import './app/styles/components/navbar.component';
+@import "./app/styles/components/header.component";
+@import "./app/styles/components/footer.component";
+@import "./app/styles/components/navbar.component";
 
 // Pages
-@import './app/styles/pages/notFound.page';
-@import './app/styles/pages/home.page';
+@import "./app/styles/pages/notFound.page";
+@import "./app/styles/pages/home.page";

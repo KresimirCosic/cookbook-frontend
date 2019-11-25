@@ -1,13 +1,13 @@
-import { Route } from 'mobx-state-router';
+import { Route } from "mobx-state-router";
 
 const routes: Route[] = [
   {
-    name: 'notFound',
-    pattern: '/not-found'
+    name: "notFound",
+    pattern: "/not-found"
   },
   {
-    name: 'home',
-    pattern: '/'
+    name: "home",
+    pattern: "/"
   }
 ];
 

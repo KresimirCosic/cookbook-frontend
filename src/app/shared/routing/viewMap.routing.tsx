@@ -1,7 +1,7 @@
-import React from 'react';
+import React from "react";
 
-import NotFound from '../../features/pages/notFound.page';
-import Home from '../../features/pages/home.page';
+import NotFound from "../../features/pages/notFound.page";
+import Home from "../../features/pages/home.page";
 
 const viewMap = {
   notFound: <NotFound />,

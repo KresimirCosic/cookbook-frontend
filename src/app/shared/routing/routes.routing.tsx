@@ -6,6 +6,14 @@ const routes: Route[] = [
     pattern: "/not-found"
   },
   {
+    name: "register",
+    pattern: "/register"
+  },
+  {
+    name: "login",
+    pattern: "/login"
+  },
+  {
     name: "home",
     pattern: "/"
   }

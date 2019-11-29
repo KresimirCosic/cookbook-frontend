@@ -9,6 +9,8 @@ const Register = () => {
 
   return (
     <div className="Page Page-Register">
+      <button onClick={() => rootStore.routerStore.goTo("login")}>Login</button>
+      <button onClick={() => rootStore.routerStore.goTo("home")}>Home</button>
       <h1>This is the page: {rootStore.routerStore.getCurrentRoute().name}.</h1>
     </div>
   );

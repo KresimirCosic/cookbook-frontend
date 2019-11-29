@@ -14,6 +14,7 @@ const Login = () => {
 
   const handleLogin = (e: SyntheticEvent) => {
     e.preventDefault();
+
     axios
       .post(
         `${TARGET}/api/login`,
@@ -25,7 +26,8 @@ const Login = () => {
           withCredentials: true
         }
       )
-      .then(response => console.log(response));
+      .then(response => console.log(response))
+      .catch(error => console.log(error.response));
   };
 
   return (
@@ -34,7 +36,9 @@ const Login = () => {
         Register
       </button>
       <button onClick={() => rootStore.routerStore.goTo("home")}>Home</button>
+
       <h1>This is the page: {rootStore.routerStore.getCurrentRoute().name}.</h1>
+
       <form onSubmit={handleLogin}>
         <label htmlFor="email">Email:</label>
         <input
@@ -52,7 +56,7 @@ const Login = () => {
           onChange={e => setPassword(e.target.value)}
         />
 
-        <input type="submit" />
+        <input type="submit" value="Login" />
       </form>
     </div>
   );

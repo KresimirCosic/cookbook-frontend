@@ -9,7 +9,6 @@ const Header = () => {
   const { routerStore } = useRootStore();
 
   const handleLogout = async () => {
-    console.log("Logging out...");
     axios.post(
       `${TARGET}/api/logout`,
       {},

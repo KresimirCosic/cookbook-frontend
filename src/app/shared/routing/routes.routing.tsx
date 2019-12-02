@@ -1,4 +1,4 @@
-import { Route } from "mobx-state-router";
+import { Route, RouterStore } from "mobx-state-router";
 
 const routes: Route[] = [
   {
@@ -18,5 +18,21 @@ const routes: Route[] = [
     pattern: "/"
   }
 ];
+
+routes.forEach(route => {
+  // Turning off loader upon enter
+  route.onEnter = async (fromState, toState, routerStore: RouterStore) => {
+    const { rootStore } = routerStore;
+
+    rootStore.userInterfaceStore.turnOffLoader();
+  };
+
+  // Turning on loader upon exiting
+  route.beforeExit = async (fromState, toState, routerStore: RouterStore) => {
+    const { rootStore } = routerStore;
+
+    rootStore.userInterfaceStore.turnOnLoader();
+  };
+});
 
 export default routes;

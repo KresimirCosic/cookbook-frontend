@@ -3,6 +3,7 @@ import RootStore from "./root.store";
 
 export default class UserInterfaceStore {
   overlay: boolean = false;
+  loader: boolean = true;
 
   constructor(private rootStore: RootStore) {}
 
@@ -10,15 +11,36 @@ export default class UserInterfaceStore {
     return this.overlay;
   }
 
-  toggleOverlay(): void {
-    this.overlay = !this.overlay;
+  get loaderStatus(): boolean {
+    return this.loader;
   }
+
+  turnOffOverlay = () => {
+    this.overlay = false;
+  };
+
+  turnOnOverlay = () => {
+    this.overlay = true;
+  };
+
+  turnOffLoader = () => {
+    this.loader = false;
+  };
+
+  turnOnLoader = () => {
+    this.loader = true;
+  };
 }
 
 decorate(UserInterfaceStore, {
   overlay: observable,
+  loader: observable,
 
   overlayStatus: computed,
+  loaderStatus: computed,
 
-  toggleOverlay: action
+  turnOffOverlay: action,
+  turnOnOverlay: action,
+  turnOffLoader: action,
+  turnOnLoader: action
 });

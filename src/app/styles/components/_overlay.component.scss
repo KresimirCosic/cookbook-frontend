@@ -1,0 +1,28 @@
+.Overlay {
+  z-index: 9;
+  background-color: rgba(0, 0, 0, 0.35);
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  &-enter {
+    transition: all 150ms ease-out;
+    opacity: 0;
+    &-active {
+      opacity: 1;
+    }
+    &-done {
+      opacity: 1;
+    }
+  }
+  &-exit {
+    transition: all 250ms ease-in;
+    opacity: 1;
+    &-active {
+      opacity: 0;
+    }
+    &-done {
+      opacity: 0;
+    }
+  }
+}

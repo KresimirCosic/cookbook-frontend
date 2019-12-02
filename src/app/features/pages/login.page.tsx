@@ -2,7 +2,6 @@ import React, { SyntheticEvent, useState } from "react";
 import { observer } from "mobx-react";
 import axios from "axios";
 
-import withRootStore from "../../shared/hocs/withRootStore.hoc";
 import useRootStore from "../../shared/hooks/useRootStore.hook";
 
 import { TARGET } from "../../shared/environment";
@@ -32,11 +31,6 @@ const Login = () => {
 
   return (
     <div className="Page Page-Login">
-      <button onClick={() => rootStore.routerStore.goTo("register")}>
-        Register
-      </button>
-      <button onClick={() => rootStore.routerStore.goTo("home")}>Home</button>
-
       <h1>This is the page: {rootStore.routerStore.getCurrentRoute().name}.</h1>
 
       <form onSubmit={handleLogin}>
@@ -62,4 +56,4 @@ const Login = () => {
   );
 };
 
-export default withRootStore(observer(Login));
+export default observer(Login);

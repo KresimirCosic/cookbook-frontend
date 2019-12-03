@@ -5,6 +5,7 @@ import Header from "./header.component";
 import Footer from "./footer.component";
 import Overlay from "./overlay.component";
 import Loader from "./loader.component";
+import Menu from "./menu.component";
 
 import viewMap from "../../shared/routing/viewMap.routing";
 import useRootStore from "../../shared/hooks/useRootStore.hook";
@@ -17,6 +18,7 @@ const Shell: FC = () => {
       <Header />
       <Loader />
       <Overlay />
+      <Menu />
       <RouterView routerStore={routerStore} viewMap={viewMap} />
       <Footer />
     </div>

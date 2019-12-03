@@ -1,0 +1,31 @@
+.Menu {
+  background-color: $color-oxford-blue;
+  z-index: 10;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 30%;
+  position: absolute;
+  box-shadow: 5px 0px 10px 0px rgba(0, 0, 0, 0.15);
+  min-width: 280px;
+  &-enter {
+    transition: all 150ms ease-out;
+    transform: translateX(-100%);
+    &-active {
+      transform: translateX(0);
+    }
+    &-done {
+      transform: translateX(0);
+    }
+  }
+  &-exit {
+    transition: all 250ms ease-in;
+    transform: translateX(0);
+    &-active {
+      transform: translateX(-100%);
+    }
+    &-done {
+      transform: translateX(-100%);
+    }
+  }
+}

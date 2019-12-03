@@ -8,6 +8,7 @@ const body = document.body;
 export default class UserInterfaceStore {
   overlay: boolean = false;
   loader: boolean = true;
+  menu: boolean = false;
 
   constructor(private rootStore: RootStore) {}
 
@@ -17,6 +18,10 @@ export default class UserInterfaceStore {
 
   get loaderStatus(): boolean {
     return this.loader;
+  }
+
+  get menuStatus(): boolean {
+    return this.menu;
   }
 
   turnOffOverlay = () => {
@@ -36,14 +41,24 @@ export default class UserInterfaceStore {
     this.loader = true;
     body.style.overflow = "hidden";
   };
+
+  turnOffMenu = () => {
+    this.menu = false;
+  };
+
+  turnOnMenu = () => {
+    this.menu = true;
+  };
 }
 
 decorate(UserInterfaceStore, {
   overlay: observable,
   loader: observable,
+  menu: observable,
 
   overlayStatus: computed,
   loaderStatus: computed,
+  menuStatus: computed,
 
   turnOffOverlay: action,
   turnOnOverlay: action,

@@ -9,7 +9,7 @@ const OVERLAY_EXIT_DURATION = 250;
 
 const Overlay: FC = () => {
   const { userInterfaceStore } = useRootStore();
-  let { overlayStatus, turnOffOverlay } = userInterfaceStore;
+  let { overlayStatus, turnOffOverlay, turnOffMenu } = userInterfaceStore;
 
   return (
     <CSSTransition
@@ -20,7 +20,10 @@ const Overlay: FC = () => {
         exit: OVERLAY_EXIT_DURATION
       }}
       classNames="Overlay"
-      onClick={() => turnOffOverlay()}
+      onClick={() => {
+        turnOffOverlay();
+        turnOffMenu();
+      }}
       unmountOnExit
     >
       <div className="Overlay absolute"></div>

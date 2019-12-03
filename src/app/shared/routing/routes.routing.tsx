@@ -20,7 +20,7 @@ const routes: Route[] = [
 ];
 
 routes.forEach(route => {
-  // Turning off loader upon enter
+  // Turning off loader upon entering
   route.onEnter = async (fromState, toState, routerStore: RouterStore) => {
     const { rootStore } = routerStore;
 
@@ -28,7 +28,7 @@ routes.forEach(route => {
   };
 
   // Turning on loader upon exiting
-  route.beforeExit = async (fromState, toState, routerStore: RouterStore) => {
+  route.onExit = async (fromState, toState, routerStore: RouterStore) => {
     const { rootStore } = routerStore;
 
     rootStore.userInterfaceStore.turnOnLoader();

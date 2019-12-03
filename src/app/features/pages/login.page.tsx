@@ -5,16 +5,15 @@ import axios from "axios";
 import useRootStore from "../../shared/hooks/useRootStore.hook";
 
 import { TARGET } from "../../shared/environment";
-import { LOADER_ENTRY_DURATION } from "../components/loader.component";
 
 const Login = () => {
-  const rootStore = useRootStore();
+  const { routerStore, userInterfaceStore } = useRootStore();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const handleLogin = (e: SyntheticEvent) => {
     e.preventDefault();
-    rootStore.userInterfaceStore.turnOnLoader();
+    userInterfaceStore.turnOnLoader();
 
     axios
       .post(
@@ -28,17 +27,14 @@ const Login = () => {
         }
       )
       .then(response => {
-        setTimeout(
-          () => rootStore.userInterfaceStore.turnOffLoader(),
-          LOADER_ENTRY_DURATION
-        );
+        routerStore.goTo("home");
       })
       .catch(error => console.log(error.response));
   };
 
   return (
     <div className="Page Page-Login">
-      <h1>This is the page: {rootStore.routerStore.getCurrentRoute().name}.</h1>
+      <h1>This is the page: {routerStore.getCurrentRoute().name}.</h1>
 
       <form onSubmit={handleLogin}>
         <label htmlFor="email">Email:</label>

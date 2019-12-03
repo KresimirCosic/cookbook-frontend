@@ -5,7 +5,6 @@ import axios from "axios";
 
 import useRootStore from "../../shared/hooks/useRootStore.hook";
 import { TARGET } from "../../shared/environment";
-import { LOADER_ENTRY_DURATION } from "../components/loader.component";
 
 const Navbar = () => {
   const rootStore = useRootStore();
@@ -22,10 +21,7 @@ const Navbar = () => {
         }
       )
       .then(response => {
-        setTimeout(
-          () => userInterfaceStore.turnOffLoader(),
-          LOADER_ENTRY_DURATION
-        );
+        routerStore.goTo("login");
       });
   };
 

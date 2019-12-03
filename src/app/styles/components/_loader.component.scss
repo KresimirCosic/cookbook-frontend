@@ -9,7 +9,7 @@
   bottom: 0;
   left: 0;
   &-enter {
-    transition: all 25ms ease-out;
+    transition: all 0ms ease-out;
     transform: scale(2);
     opacity: 0;
     &-active {

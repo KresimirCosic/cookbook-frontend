@@ -4,7 +4,7 @@ import { CSSTransition } from "react-transition-group";
 
 import useRootStore from "../../shared/hooks/useRootStore.hook";
 
-export const LOADER_ENTRY_DURATION = 25;
+export const LOADER_ENTRY_DURATION = 0;
 export const LOADER_EXIT_DURATION = 350;
 
 const Loader: FC = () => {

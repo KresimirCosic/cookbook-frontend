@@ -5,6 +5,7 @@ import axios from "axios";
 import useRootStore from "../../shared/hooks/useRootStore.hook";
 
 import { TARGET } from "../../shared/environment";
+import { LOADER_ENTRY_DURATION } from "../components/loader.component";
 
 const Login = () => {
   const rootStore = useRootStore();
@@ -13,6 +14,7 @@ const Login = () => {
 
   const handleLogin = (e: SyntheticEvent) => {
     e.preventDefault();
+    rootStore.userInterfaceStore.turnOnLoader();
 
     axios
       .post(
@@ -25,7 +27,12 @@ const Login = () => {
           withCredentials: true
         }
       )
-      .then(response => console.log(response))
+      .then(response => {
+        setTimeout(
+          () => rootStore.userInterfaceStore.turnOffLoader(),
+          LOADER_ENTRY_DURATION
+        );
+      })
       .catch(error => console.log(error.response));
   };
 

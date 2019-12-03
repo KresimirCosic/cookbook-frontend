@@ -5,18 +5,28 @@ import axios from "axios";
 
 import useRootStore from "../../shared/hooks/useRootStore.hook";
 import { TARGET } from "../../shared/environment";
+import { LOADER_ENTRY_DURATION } from "../components/loader.component";
 
 const Navbar = () => {
-  const { routerStore } = useRootStore();
+  const rootStore = useRootStore();
+  const { routerStore, userInterfaceStore } = rootStore;
 
   const handleLogout = async () => {
-    axios.post(
-      `${TARGET}/api/logout`,
-      {},
-      {
-        withCredentials: true
-      }
-    );
+    userInterfaceStore.turnOnLoader();
+    axios
+      .post(
+        `${TARGET}/api/logout`,
+        {},
+        {
+          withCredentials: true
+        }
+      )
+      .then(response => {
+        setTimeout(
+          () => userInterfaceStore.turnOffLoader(),
+          LOADER_ENTRY_DURATION
+        );
+      });
   };
 
   return (

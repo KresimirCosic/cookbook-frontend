@@ -1,5 +1,7 @@
 import { Route, RouterStore } from "mobx-state-router";
 
+import { LOADER_ENTRY_DURATION } from "../../features/components/loader.component";
+
 const routes: Route[] = [
   {
     name: "notFound",
@@ -24,7 +26,11 @@ routes.forEach(route => {
   route.onEnter = async (fromState, toState, routerStore: RouterStore) => {
     const { rootStore } = routerStore;
 
-    rootStore.userInterfaceStore.turnOffLoader();
+    window.scrollTo(0, 0);
+    setTimeout(
+      () => rootStore.userInterfaceStore.turnOffLoader(),
+      LOADER_ENTRY_DURATION
+    );
   };
 
   // Turning on loader upon exiting

@@ -1,5 +1,9 @@
 import { decorate, observable, computed, action } from "mobx";
+
 import RootStore from "./root.store";
+import { LOADER_EXIT_DURATION } from "../../features/components/loader.component";
+
+const body = document.body;
 
 export default class UserInterfaceStore {
   overlay: boolean = false;
@@ -25,10 +29,12 @@ export default class UserInterfaceStore {
 
   turnOffLoader = () => {
     this.loader = false;
+    setTimeout(() => (body.style.overflow = "auto"), LOADER_EXIT_DURATION);
   };
 
   turnOnLoader = () => {
     this.loader = true;
+    body.style.overflow = "hidden";
   };
 }
 

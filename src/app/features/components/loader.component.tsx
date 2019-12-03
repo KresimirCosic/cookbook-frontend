@@ -4,8 +4,8 @@ import { CSSTransition } from "react-transition-group";
 
 import useRootStore from "../../shared/hooks/useRootStore.hook";
 
-const LOADER_ENTRY_DURATION = 150;
-const LOADER_EXIT_DURATION = 250;
+export const LOADER_ENTRY_DURATION = 25;
+export const LOADER_EXIT_DURATION = 350;
 
 const Loader: FC = () => {
   const { userInterfaceStore } = useRootStore();

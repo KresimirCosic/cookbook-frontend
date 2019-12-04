@@ -1,9 +1,9 @@
 // Color palette
-$color-surf-crest: #c9e4ca;
-$color-acapulco: #87bba2;
-$color-smalt-blue: #55828b;
-$color-william: #3b6064;
-$color-oxford-blue: #364958;
+$color-primary: #000;
+$color-secondary: #cf5c36;
+$color-tertiary: #eee5e9;
+$color-quaternary: #7c7c7c;
+$color-quinary: #efc88b;
 
 // Breakpoints
 $breakpoint-xsm: 480px;
@@ -16,3 +16,9 @@ $font-xsm: 12px;
 $font-sm: 16px;
 $font-md: 20px;
 $font-lg: 24px;
+
+// Transition durations
+$duration-xsm: 50ms;
+$duration-sm: 100ms;
+$duration-md: 200ms;
+$duration-lg: 350ms;

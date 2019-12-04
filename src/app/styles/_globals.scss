@@ -1,3 +1,29 @@
+html {
+  font-size: $font-lg;
+  @media only screen and (max-width: $breakpoint-sm) {
+    font-size: $font-sm;
+  }
+  @media only screen and (max-width: $breakpoint-xsm) {
+    font-size: $font-xsm;
+  }
+}
+
+body {
+  overflow: hidden;
+}
+
+.Page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  @media only screen and (max-width: $breakpoint-xsm) {
+    padding: 1.5rem;
+  }
+  @media only screen and (max-width: $breakpoint-xsm) {
+    padding: 1rem;
+  }
+}
+
 .relative {
   position: relative;
 }

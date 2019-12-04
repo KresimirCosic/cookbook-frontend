@@ -29,14 +29,15 @@ const Login = () => {
       .then(response => {
         routerStore.goTo("home");
       })
-      .catch(error => console.log(error.response));
+      .catch(error => {
+        console.log(error.response);
+        userInterfaceStore.turnOffLoader();
+      });
   };
 
   return (
-    <div className="Page Page-Login">
-      <h1>This is the page: {routerStore.getCurrentRoute().name}.</h1>
-
-      <form onSubmit={handleLogin}>
+    <div className="Page Login">
+      <form onSubmit={handleLogin} className="form form-login">
         <label htmlFor="email">Email:</label>
         <input
           type="text"
@@ -55,6 +56,13 @@ const Login = () => {
 
         <input type="submit" value="Login" />
       </form>
+
+      <h4>
+        Don't have an account?
+        <button onClick={() => routerStore.goTo("register")}>
+          Register for free!
+        </button>
+      </h4>
     </div>
   );
 };

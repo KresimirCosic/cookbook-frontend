@@ -2,13 +2,12 @@ import React, { SyntheticEvent, useState } from "react";
 import { observer } from "mobx-react";
 import axios from "axios";
 
-import withRootStore from "../../shared/hocs/withRootStore.hoc";
 import useRootStore from "../../shared/hooks/useRootStore.hook";
 
 import { TARGET } from "../../shared/environment";
 
 const Register = () => {
-  const rootStore = useRootStore();
+  const { routerStore } = useRootStore();
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -34,8 +33,6 @@ const Register = () => {
 
   return (
     <div className="Page Page-Register">
-      <h1>This is the page: {rootStore.routerStore.getCurrentRoute().name}.</h1>
-
       <form onSubmit={handleRegister}>
         <label htmlFor="username">Username:</label>
         <input
@@ -63,8 +60,13 @@ const Register = () => {
 
         <input type="submit" value="Register" />
       </form>
+
+      <h4>
+        Already have an account?
+        <button onClick={() => routerStore.goTo("login")}>Login here</button>
+      </h4>
     </div>
   );
 };
 
-export default withRootStore(observer(Register));
+export default observer(Register);

@@ -1,8 +1,5 @@
-// .Login {
-//   .form-login {
-//     max-width: 400px;
-//     margin: 0 auto;
-//     display: flex;
-//     flex-direction: column;
-//   }
-// }
+.Login {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}

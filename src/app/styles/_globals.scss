@@ -2,6 +2,7 @@
   box-sizing: border-box;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  color: $color-primary;
 }
 
 html {
@@ -12,32 +13,55 @@ body {
   overflow: hidden;
 }
 
-button,
-input[type="submit"] {
-  transition: all $duration-lg;
-  cursor: pointer;
-  background: none;
-  border: 1px solid $color-secondary;
-  &:active,
-  &:hover {
-    color: $color-secondary;
-  }
-}
-
 form {
   display: flex;
   flex-direction: column;
   max-width: 400px;
   margin: 0 auto;
-  input:not(:last-child) {
-    margin-bottom: 2rem;
+}
+
+button,
+input[type="submit"] {
+  cursor: pointer;
+}
+
+input[type="submit"] {
+  outline: none;
+  transition: all $duration-lg;
+  color: $color-quaternary;
+  background-color: $color-tertiary;
+  border: 4px solid $color-tertiary;
+  &:hover,
+  &:focus {
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+  }
+  &:active {
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+  }
+  &:disabled {
+    opacity: 0.2;
+    cursor: not-allowed;
   }
 }
 
+input {
+  padding: 0.5rem;
+  position: relative;
+  &:not(:last-child) {
+    margin-bottom: 2rem;
+  }
+  &::placeholder {
+    font-style: italic;
+    color: $color-tertiary;
+  }
+}
+
+label {
+  margin-bottom: 0.25rem;
+}
+
 .Page {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 4rem 2rem;
+  min-height: 100vh;
   @media only screen and (max-width: $breakpoint-sm) {
     padding: 2rem 1rem;
   }

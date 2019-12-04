@@ -1,7 +1,6 @@
 import React, { FC } from "react";
 import { RouterView } from "mobx-state-router";
 
-import Footer from "./footer.component";
 import Overlay from "./overlay.component";
 import Loader from "./loader.component";
 import Menu from "./menu.component";
@@ -20,7 +19,6 @@ const Shell: FC = () => {
       <Overlay />
       <Menu />
       <RouterView routerStore={routerStore} viewMap={viewMap} />
-      <Footer />
     </div>
   );
 };

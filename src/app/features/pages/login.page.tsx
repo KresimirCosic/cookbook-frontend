@@ -38,15 +38,19 @@ const Login = () => {
   return (
     <div className="Page Login">
       <form onSubmit={handleLogin} className="form form-login">
-        <label htmlFor="email">Email:</label>
+        <label htmlFor="email">
+          <small>Email:</small>
+        </label>
         <input
-          type="text"
+          type="email"
           placeholder="Email"
           id="email"
           onChange={e => setEmail(e.target.value)}
         />
 
-        <label htmlFor="password">Password:</label>
+        <label htmlFor="password">
+          <small>Password:</small>
+        </label>
         <input
           type="password"
           placeholder="Password"
@@ -56,13 +60,6 @@ const Login = () => {
 
         <input type="submit" value="Login" />
       </form>
-
-      <h4>
-        Don't have an account?
-        <button onClick={() => routerStore.goTo("register")}>
-          Register for free!
-        </button>
-      </h4>
     </div>
   );
 };

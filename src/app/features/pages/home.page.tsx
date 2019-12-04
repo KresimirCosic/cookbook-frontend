@@ -1,10 +1,16 @@
 import React from "react";
 import { observer } from "mobx-react";
 
-import useRootStore from "../../shared/hooks/useRootStore.hook";
+import Header from "../components/header.component";
+import Footer from "../components/footer.component";
 
 const Home = () => {
-  return <div className="Page Home"></div>;
+  return (
+    <div className="Page Home">
+      <Header />
+      <Footer />
+    </div>
+  );
 };
 
 export default observer(Home);

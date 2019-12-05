@@ -1,43 +1,19 @@
-import React, { SyntheticEvent, useState } from "react";
+import React, { useState } from "react";
 import { observer } from "mobx-react";
-import axios from "axios";
 
-import useRootStore from "../../shared/hooks/useRootStore.hook";
-
-import { TARGET } from "../../shared/environment";
+import useRootService from "../../shared/hooks/useRootService.hook";
 
 const Login = () => {
-  const { routerStore, userInterfaceStore } = useRootStore();
+  const { authenticationService } = useRootService();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleLogin = (e: SyntheticEvent) => {
-    e.preventDefault();
-    userInterfaceStore.turnOnLoader();
-
-    axios
-      .post(
-        `${TARGET}/api/login`,
-        {
-          email: email,
-          password: password
-        },
-        {
-          withCredentials: true
-        }
-      )
-      .then(response => {
-        routerStore.goTo("home");
-      })
-      .catch(error => {
-        console.log(error.response);
-        userInterfaceStore.turnOffLoader();
-      });
-  };
-
   return (
     <div className="Page Login">
-      <form onSubmit={handleLogin} className="form form-login">
+      <form
+        onSubmit={e => authenticationService.handleLogin(e, email, password)}
+        className="form form-login"
+      >
         <label htmlFor="email">
           <small>Email:</small>
         </label>

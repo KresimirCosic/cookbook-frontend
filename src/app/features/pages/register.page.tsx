@@ -1,36 +1,21 @@
-import React, { SyntheticEvent, useState } from "react";
+import React, { useState } from "react";
 import { observer } from "mobx-react";
-import axios from "axios";
 
-import { TARGET } from "../../shared/environment";
+import useRootService from "../../shared/hooks/useRootService.hook";
 
 const Register = () => {
+  const { authenticationService } = useRootService();
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleRegister = (e: SyntheticEvent) => {
-    e.preventDefault();
-
-    axios
-      .post(
-        `${TARGET}/api/register`,
-        {
-          username: username,
-          email: email,
-          password: password
-        },
-        {
-          withCredentials: true
-        }
-      )
-      .then(response => console.log(response))
-      .catch(error => console.log(error.response));
-  };
-
   return (
     <div className="Page Register">
-      <form onSubmit={handleRegister}>
+      <form
+        onSubmit={e =>
+          authenticationService.handleRegistration(e, username, email, password)
+        }
+      >
         <label htmlFor="username">Username:</label>
         <input
           type="text"

@@ -1,29 +1,12 @@
 import React from "react";
 import { observer } from "mobx-react";
 
-import axios from "axios";
-
 import useRootStore from "../../shared/hooks/useRootStore.hook";
-import { TARGET } from "../../shared/environment";
+import useRootService from "../../shared/hooks/useRootService.hook";
 
 const Navbar = () => {
-  const rootStore = useRootStore();
-  const { routerStore, userInterfaceStore } = rootStore;
-
-  const handleLogout = async () => {
-    userInterfaceStore.turnOnLoader();
-    axios
-      .post(
-        `${TARGET}/api/logout`,
-        {},
-        {
-          withCredentials: true
-        }
-      )
-      .then(response => {
-        routerStore.goTo("login");
-      });
-  };
+  const { routerStore } = useRootStore();
+  const { authenticationService } = useRootService();
 
   return (
     <div className="Navbar">
@@ -38,7 +21,7 @@ const Navbar = () => {
           <button onClick={() => routerStore.goTo("login")}>Login</button>
         </li>
         <li>
-          <button onClick={handleLogout}>Logout</button>
+          <button onClick={authenticationService.handleLogout}>Logout</button>
         </li>
       </ul>
     </div>

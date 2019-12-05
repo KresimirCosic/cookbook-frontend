@@ -63,5 +63,7 @@ decorate(UserInterfaceStore, {
   turnOffOverlay: action,
   turnOnOverlay: action,
   turnOffLoader: action,
-  turnOnLoader: action
+  turnOnLoader: action,
+  turnOffMenu: action,
+  turnOnMenu: action
 });

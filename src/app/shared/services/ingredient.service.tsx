@@ -5,7 +5,7 @@ import { rootStore } from "../stores/root.store";
 import { RootService } from "./root.service";
 import { TARGET } from "../environment";
 
-const { routerStore, userInterfaceStore } = rootStore;
+const { userInterfaceStore, ingredientStore } = rootStore;
 
 const requestOptions: AxiosRequestConfig = {
   withCredentials: true

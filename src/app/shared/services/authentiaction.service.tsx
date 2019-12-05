@@ -1,9 +1,9 @@
+import { SyntheticEvent } from "react";
 import axios, { AxiosRequestConfig } from "axios";
 
 import { rootStore } from "../stores/root.store";
 import { RootService } from "./root.service";
 import { TARGET } from "../environment";
-import { SyntheticEvent } from "react";
 
 const { routerStore, userInterfaceStore } = rootStore;
 
@@ -11,7 +11,7 @@ const requestOptions: AxiosRequestConfig = {
   withCredentials: true
 };
 
-export class AuthenticationService {
+export default class AuthenticationService {
   constructor(private rootService: RootService) {}
 
   handleRegistration = (

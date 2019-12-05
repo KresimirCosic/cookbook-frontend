@@ -1,26 +1,31 @@
 import React from "react";
 import { observer } from "mobx-react";
+import { RouterLink } from "mobx-state-router";
 
-import useRootStore from "../../shared/hooks/useRootStore.hook";
 import useRootService from "../../shared/hooks/useRootService.hook";
 
 const Navbar = () => {
-  const { routerStore } = useRootStore();
   const { authenticationService } = useRootService();
 
   return (
     <div className="Navbar">
-      <ul>
-        <li>
-          <button onClick={() => routerStore.goTo("home")}>Home</button>
+      <ul className="navbar-list">
+        <li className="navbar-item">
+          <RouterLink routeName="home" activeClassName="active">
+            Home
+          </RouterLink>
         </li>
-        <li>
-          <button onClick={() => routerStore.goTo("register")}>Register</button>
+        <li className="navbar-item">
+          <RouterLink routeName="login" activeClassName="active">
+            Login
+          </RouterLink>
         </li>
-        <li>
-          <button onClick={() => routerStore.goTo("login")}>Login</button>
+        <li className="navbar-item">
+          <RouterLink routeName="register" activeClassName="active">
+            Register
+          </RouterLink>
         </li>
-        <li>
+        <li className="navbar-item">
           <button onClick={authenticationService.handleLogout}>Logout</button>
         </li>
       </ul>

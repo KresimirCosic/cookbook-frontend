@@ -1,4 +1,5 @@
 import React, { FC } from "react";
+import { Provider } from "mobx-react";
 import { HistoryAdapter } from "mobx-state-router";
 
 import Shell from "./app/features/components/shell.component";
@@ -15,9 +16,9 @@ const App: FC = () => {
 
   return (
     <div className="App">
-      <RootStoreContext.Provider value={rootStore}>
+      <Provider rootStore={rootStore}>
         <Shell />
-      </RootStoreContext.Provider>
+      </Provider>
     </div>
   );
 };

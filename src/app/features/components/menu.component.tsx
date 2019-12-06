@@ -10,7 +10,7 @@ const MENU_EXIT_DURATION: number = 250;
 
 const Menu: FC = () => {
   const { userInterfaceStore } = useRootStore();
-  let { menuStatus } = userInterfaceStore;
+  const { menuStatus } = userInterfaceStore;
 
   return (
     <CSSTransition

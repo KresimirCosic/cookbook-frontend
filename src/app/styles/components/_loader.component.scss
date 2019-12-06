@@ -22,7 +22,7 @@
     }
   }
   &-exit {
-    transition: all 350ms ease-in;
+    transition: all $duration-lg ease-in;
     transform: scale(1);
     opacity: 1;
     &-active {

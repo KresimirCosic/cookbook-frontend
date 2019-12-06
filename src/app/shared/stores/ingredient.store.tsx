@@ -3,16 +3,11 @@ import { decorate, observable, computed, action } from "mobx";
 import RootStore from "./root.store";
 
 export default class IngredientStore {
-  allIngredients: [] = [];
   userIngredients: [] = [];
 
   constructor(private rootStore: RootStore) {}
 
-  get totalAllIngredients(): number {
-    return this.allIngredients.length;
-  }
-
-  get totalUserIngredients(): number {
+  get totalIngredients() {
     return this.userIngredients.length;
   }
 
@@ -30,11 +25,9 @@ export default class IngredientStore {
 }
 
 decorate(IngredientStore, {
-  allIngredients: observable,
   userIngredients: observable,
 
-  totalAllIngredients: computed,
-  totalUserIngredients: computed,
+  totalIngredients: computed,
 
   addIngredient: action,
   updateIngredient: action,

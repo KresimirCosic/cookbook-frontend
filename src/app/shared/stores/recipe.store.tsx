@@ -7,7 +7,7 @@ export default class RecipeStore {
 
   constructor(private rootStore: RootStore) {}
 
-  get totalUserRecipes(): number {
+  get totalRecipes() {
     return this.userRecipes.length;
   }
 
@@ -27,7 +27,7 @@ export default class RecipeStore {
 decorate(RecipeStore, {
   userRecipes: observable,
 
-  totalUserRecipes: computed,
+  totalRecipes: computed,
 
   addRecipe: action,
   updateRecipe: action,

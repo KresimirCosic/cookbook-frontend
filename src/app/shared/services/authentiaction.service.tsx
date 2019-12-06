@@ -56,6 +56,9 @@ export default class AuthenticationService {
         requestOptions
       )
       .then(response => {
+        const { email, username } = response.data;
+
+        authenticationStore.logIn(email, username);
         routerStore.goTo("home");
       })
       .catch(error => {
@@ -67,8 +70,9 @@ export default class AuthenticationService {
   handleLogout = async () => {
     userInterfaceStore.turnOnLoader();
 
-    axios
-      .post(`${TARGET}/api/logout`, {}, requestOptions)
-      .then(response => routerStore.goTo("login"));
+    axios.post(`${TARGET}/api/logout`, {}, requestOptions).then(response => {
+      authenticationStore.logOut();
+      routerStore.goTo("login");
+    });
   };
 }

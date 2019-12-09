@@ -1,4 +1,3 @@
-import { SyntheticEvent } from "react";
 import axios, { AxiosRequestConfig } from "axios";
 
 import { rootStore } from "../stores/root.store";
@@ -14,13 +13,7 @@ const requestOptions: AxiosRequestConfig = {
 export default class AuthenticationService {
   constructor(private rootService: RootService) {}
 
-  handleRegistration = (
-    e: SyntheticEvent,
-    username: string,
-    email: string,
-    password: string
-  ) => {
-    e.preventDefault();
+  handleRegistration = (username: string, email: string, password: string) => {
     userInterfaceStore.turnOnLoader();
 
     axios
@@ -42,8 +35,7 @@ export default class AuthenticationService {
       });
   };
 
-  handleLogin = (e: SyntheticEvent, email: string, password: string) => {
-    e.preventDefault();
+  handleLogin = (email: string, password: string) => {
     userInterfaceStore.turnOnLoader();
 
     axios
@@ -58,7 +50,7 @@ export default class AuthenticationService {
       .then(response => {
         const { email, username } = response.data;
 
-        authenticationStore.logIn(email, username);
+        authenticationStore.setUserInformation(email, username);
         routerStore.goTo("home");
       })
       .catch(error => {
@@ -71,7 +63,7 @@ export default class AuthenticationService {
     userInterfaceStore.turnOnLoader();
 
     axios.post(`${TARGET}/api/logout`, {}, requestOptions).then(response => {
-      authenticationStore.logOut();
+      authenticationStore.removeUserInformation();
       routerStore.goTo("login");
     });
   };

@@ -11,7 +11,10 @@ const Login = () => {
   return (
     <div className="Page Login">
       <form
-        onSubmit={e => authenticationService.handleLogin(e, email, password)}
+        onSubmit={e => {
+          e.preventDefault();
+          authenticationService.handleLogin(email, password);
+        }}
         className="form form-login"
       >
         <label htmlFor="email">

@@ -1,11 +1,10 @@
-import { SyntheticEvent } from "react";
 import axios, { AxiosRequestConfig } from "axios";
 
 import { rootStore } from "../stores/root.store";
 import { RootService } from "./root.service";
 import { TARGET } from "../environment";
 
-const { userInterfaceStore, ingredientStore } = rootStore;
+const { userInterfaceStore, ingredientStore, authenticationStore } = rootStore;
 
 const requestOptions: AxiosRequestConfig = {
   withCredentials: true
@@ -13,6 +12,10 @@ const requestOptions: AxiosRequestConfig = {
 
 export default class IngredientService {
   constructor(private rootService: RootService) {}
+
+  handleIngredientsFetching = () => {
+    // TODO
+  };
 
   handleIngredientCreation = () => {
     // TODO

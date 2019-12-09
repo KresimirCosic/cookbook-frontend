@@ -12,9 +12,10 @@ const Register = () => {
   return (
     <div className="Page Register">
       <form
-        onSubmit={e =>
-          authenticationService.handleRegistration(e, username, email, password)
-        }
+        onSubmit={e => {
+          e.preventDefault();
+          authenticationService.handleRegistration(username, email, password);
+        }}
       >
         <label htmlFor="username">Username:</label>
         <input

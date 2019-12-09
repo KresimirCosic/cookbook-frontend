@@ -21,13 +21,25 @@ export default class AuthenticationStore {
     return this.email;
   }
 
-  logIn = (email: string, username: string) => {
+  setUserInformation = (email: string, username: string) => {
+    // Setting relevant user information in the localStorage
+    localStorage.setItem(
+      "authenticationStore",
+      JSON.stringify({
+        username: username,
+        email: email
+      })
+    );
+
     this.loggedIn = true;
     this.username = username;
     this.email = email;
   };
 
-  logOut = () => {
+  removeUserInformation = () => {
+    // Removing the user information from the localStorage
+    localStorage.removeItem("authenticationStore");
+
     this.loggedIn = false;
     this.username = null;
     this.email = null;
@@ -43,6 +55,6 @@ decorate(AuthenticationStore, {
   usernameValue: computed,
   emailValue: computed,
 
-  logIn: action,
-  logOut: action
+  setUserInformation: action,
+  removeUserInformation: action
 });

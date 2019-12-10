@@ -13,19 +13,30 @@ const requestOptions: AxiosRequestConfig = {
 export default class IngredientService {
   constructor(private rootService: RootService) {}
 
-  handleIngredientsFetching = () => {
-    // TODO
+  handleFetchingIngredients = () => {
+    console.log("Fetching all ingredients.");
+    axios
+      .get(`${TARGET}/api/ingredients`, requestOptions)
+      .then(response => {
+        console.log(response);
+      })
+      .catch(error => {
+        console.log(error.response);
+      });
   };
 
-  handleIngredientCreation = () => {
+  handleCreatingIngredient = () => {
     // TODO
+    console.log("Creating a new ingredient.");
   };
 
-  handleIngredientUpdate = () => {
+  handleUpdatingIngredient = () => {
     // TODO
+    console.log("Updating an existing ingredient.");
   };
 
-  handleIngredientDeletion = () => {
+  handleDeletingIngredient = () => {
     // TODO
+    console.log("Deleting an existing ingredient.");
   };
 }

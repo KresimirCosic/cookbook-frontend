@@ -14,15 +14,23 @@ const requestOptions: AxiosRequestConfig = {
 export default class RecipeService {
   constructor(private rootService: RootService) {}
 
-  handleRecipeCreation = () => {
+  handleFetchingRecipes = () => {
     // TODO
+    console.log("Fetching all recipes.");
   };
 
-  handleRecipeUpdate = () => {
+  handleCreatingRecipe = () => {
     // TODO
+    console.log("Creating a new recipe.");
   };
 
-  handleRecipeDeletion = () => {
+  handleUpdatingRecipe = () => {
     // TODO
+    console.log("Updating an existing recipe.");
+  };
+
+  handleDeletingRecipe = () => {
+    // TODO
+    console.log("Updating an existing recipe.");
   };
 }

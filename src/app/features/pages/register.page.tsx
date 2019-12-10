@@ -1,13 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { observer } from "mobx-react";
 
 import useRootService from "../../shared/hooks/useRootService.hook";
+import useRootStore from "../../shared/hooks/useRootStore.hook";
 
 const Register = () => {
   const { authenticationService } = useRootService();
+  const { userInterfaceStore } = useRootStore();
+
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  useEffect(() => {
+    // Turn off the loader
+    userInterfaceStore.turnOffLoader();
+  });
 
   return (
     <div className="Page Register">

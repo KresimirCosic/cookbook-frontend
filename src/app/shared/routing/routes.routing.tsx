@@ -1,6 +1,5 @@
-import { Route, RouterStore, RouterState } from "mobx-state-router";
+import { Route, RouterStore } from "mobx-state-router";
 
-import { LOADER_ENTRY_DURATION } from "../../features/components/loader.component";
 import RootStore from "../stores/root.store";
 
 const routes: Route[] = [
@@ -10,15 +9,7 @@ const routes: Route[] = [
   },
   {
     name: "register",
-    pattern: "/register",
-    beforeEnter: async (fromState, toState, routerStore) => {
-      // TODO re-direct
-      // const { rootStore }: { rootStore: RootStore } = routerStore;
-      // const { authenticationStore } = rootStore;
-      // if (authenticationStore.loggedInStatus) {
-      //   return Promise.reject(new RouterState("home"));
-      // }
-    }
+    pattern: "/register"
   },
   {
     name: "login",
@@ -26,33 +17,23 @@ const routes: Route[] = [
   },
   {
     name: "home",
-    pattern: "/",
-    beforeEnter: async (fromState, toState, routerStore) => {
-      // TODO re-direct
-      // const { rootStore }: { rootStore: RootStore } = routerStore;
-      // const { authenticationStore } = rootStore;
-      // if (!authenticationStore.loggedInStatus) {
-      //   return Promise.reject(new RouterState("login"));
-      // }
-    }
+    pattern: "/"
   }
 ];
 
+// General behavior when routing to and from each routes (not definitive and prone to some changes)
 routes.forEach(route => {
-  // Turning off loader upon entering
   route.onEnter = async (fromState, toState, routerStore: RouterStore) => {
     const { rootStore }: { rootStore: RootStore } = routerStore;
     const { userInterfaceStore } = rootStore;
 
-    // "Resetting" the view
+    // "Resetting" the view when entering a route
     window.scrollTo(0, 0);
     userInterfaceStore.turnOffOverlay();
     userInterfaceStore.turnOffMenu();
-
-    setTimeout(() => userInterfaceStore.turnOffLoader(), LOADER_ENTRY_DURATION);
   };
 
-  // Turning on loader upon exiting
+  // Turning on loader upon exiting a route
   route.onExit = async (fromState, toState, routerStore: RouterStore) => {
     const { rootStore }: { rootStore: RootStore } = routerStore;
     const { userInterfaceStore } = rootStore;

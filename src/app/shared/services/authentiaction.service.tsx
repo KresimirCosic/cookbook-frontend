@@ -14,8 +14,10 @@ export default class AuthenticationService {
   constructor(private rootService: RootService) {}
 
   handleRegistration = (username: string, email: string, password: string) => {
+    // Turning on loader
     userInterfaceStore.turnOnLoader();
 
+    // Sending the request to create a new user with provided information
     axios
       .post(
         `${TARGET}/api/register`,
@@ -28,9 +30,14 @@ export default class AuthenticationService {
       )
       .then(response => {
         routerStore.goTo("login");
+
+        // Turning off the loader after routing
+        userInterfaceStore.turnOffLoader();
       })
       .catch(error => {
         console.log(error.response);
+
+        // Turning off the loader after error
         userInterfaceStore.turnOffLoader();
       });
   };

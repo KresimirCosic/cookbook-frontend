@@ -16,6 +16,14 @@ const routes: Route[] = [
     pattern: "/login"
   },
   {
+    name: "ingredients",
+    pattern: "/ingredients"
+  },
+  {
+    name: "recipes",
+    pattern: "/recipes"
+  },
+  {
     name: "home",
     pattern: "/"
   }

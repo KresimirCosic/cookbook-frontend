@@ -26,6 +26,16 @@ const Navbar = () => {
           </RouterLink>
         </li>
         <li className="navbar-item">
+          <RouterLink routeName="ingredients" activeClassName="active">
+            Ingredients
+          </RouterLink>
+        </li>
+        <li className="navbar-item">
+          <RouterLink routeName="recipes" activeClassName="active">
+            Recipes
+          </RouterLink>
+        </li>
+        <li className="navbar-item">
           <button onClick={authenticationService.handleLogout}>Logout</button>
         </li>
       </ul>

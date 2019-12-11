@@ -60,28 +60,6 @@ label {
   margin-bottom: 0.25rem;
 }
 
-.Page {
-  min-height: 100vh;
-  padding: 8rem 4rem;
-  @media only screen and (max-width: $breakpoint-sm) {
-    padding: 2rem 1rem;
-  }
-  @media only screen and (max-width: $breakpoint-xsm) {
-    padding: 0.5rem 0.25rem;
-  }
-}
-
-.Header,
-.Footer {
-  padding: 1rem 2rem;
-  @media only screen and (max-width: $breakpoint-sm) {
-    padding: 0.5rem 1rem;
-  }
-  @media only screen and (max-width: $breakpoint-xsm) {
-    padding: 0.125rem 0.25rem;
-  }
-}
-
 .relative {
   position: relative;
 }
@@ -95,8 +73,20 @@ label {
   margin: 0% auto;
 }
 
-.modal {
+.Page {
+  min-height: 100vh;
+  padding: 8rem 4rem;
+  @media only screen and (max-width: $breakpoint-sm) {
+    padding: 2rem 1rem;
+  }
+  @media only screen and (max-width: $breakpoint-xsm) {
+    padding: 0.5rem 0.25rem;
+  }
+}
+
+.Modal {
   z-index: 8;
+  box-shadow: 0px 0px 10px 10px rgba(0, 0, 0, 0.5);
   background-color: $color-tertiary;
   padding: 8rem 4rem;
   @media only screen and (max-width: $breakpoint-sm) {
@@ -109,4 +99,30 @@ label {
   right: 0;
   bottom: 0;
   left: 0;
+  &-enter {
+    transition: all $duration-lg;
+    opacity: 0;
+    transform: translateY(-100%);
+    &-active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    &-done {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  &-exit {
+    transition: all $duration-lg;
+    opacity: 1;
+    transform: translateY(0);
+    &-active {
+      opacity: 0;
+      transform: translateY(-100%);
+    }
+    &-done {
+      opacity: 0;
+      transform: translateY(-100%);
+    }
+  }
 }

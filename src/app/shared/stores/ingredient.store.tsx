@@ -44,6 +44,11 @@ export default class IngredientStore {
   deleteIngredient = () => {
     // TODO
   };
+
+  clearIngredientStore = () => {
+    this.allIngredients = [];
+    this.userIngredients = [];
+  };
 }
 
 decorate(IngredientStore, {
@@ -56,5 +61,6 @@ decorate(IngredientStore, {
   addAllIngredient: action,
   addUserIngredient: action,
   updateIngredient: action,
-  deleteIngredient: action
+  deleteIngredient: action,
+  clearIngredientStore: action
 });

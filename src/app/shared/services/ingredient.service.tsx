@@ -4,12 +4,15 @@ import { rootStore } from "../stores/root.store";
 import { IAllIngredient, IUserIngredient } from "../stores/ingredient.store";
 import { RootService } from "./root.service";
 import { TARGET } from "../environment";
+import { LOADER_EXIT_DURATION } from "../../features/components/loader.component";
 
-const { userInterfaceStore, ingredientStore, authenticationStore } = rootStore;
+const { ingredientStore } = rootStore;
 
 const requestOptions: AxiosRequestConfig = {
   withCredentials: true
 };
+
+const INGREDIENT_ENTRY_DURATION = 350;
 
 export default class IngredientService {
   constructor(private rootService: RootService) {}
@@ -27,12 +30,22 @@ export default class IngredientService {
         } = response.data;
 
         // Adding all ingredients to the store
-        allIngredients.forEach(allIngredient =>
-          ingredientStore.addAllIngredient(allIngredient)
+        allIngredients.forEach((allIngredient, index) =>
+          // Giving some timeouts for UX
+          setTimeout(() => {
+            setTimeout(() => {
+              ingredientStore.addAllIngredient(allIngredient);
+            }, index * (INGREDIENT_ENTRY_DURATION / allIngredients.length));
+          }, LOADER_EXIT_DURATION)
         );
+
         // Adding user ingredients to the store
-        userIngredients.forEach(userIngredient =>
-          ingredientStore.addUserIngredient(userIngredient)
+        userIngredients.forEach((userIngredient, index) =>
+          setTimeout(() => {
+            setTimeout(() => {
+              ingredientStore.addUserIngredient(userIngredient);
+            }, index * (INGREDIENT_ENTRY_DURATION / userIngredients.length));
+          }, LOADER_EXIT_DURATION)
         );
       })
       .catch(error => {

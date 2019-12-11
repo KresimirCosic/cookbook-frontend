@@ -31,35 +31,7 @@ const Home = () => {
     };
   }, []);
 
-  return (
-    <div className="Page Home">
-      <h4>All ingredients:</h4>
-      <ul>
-        {ingredientStore.allIngredients.map(allIngredient => (
-          <li key={allIngredient.id}>
-            <p>
-              <small>{allIngredient.id}.</small>
-              &nbsp;
-              {allIngredient.name} ({allIngredient.unit})
-            </p>
-          </li>
-        ))}
-      </ul>
-      <h4>Your ingredients:</h4>
-      <ul>
-        {ingredientStore.userIngredients.map(userIngredient => (
-          <li key={userIngredient.id}>
-            <p>
-              <small>{userIngredient.id}.</small>
-              &nbsp;
-              {userIngredient.name} - {userIngredient.amount} (
-              {userIngredient.unit})
-            </p>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
+  return <div className="Page Home"></div>;
 };
 
 export default observer(Home);

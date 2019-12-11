@@ -61,8 +61,6 @@ label {
 }
 
 .Page {
-  max-width: 1200px;
-  margin: 0% auto;
   min-height: 100vh;
   padding: 8rem 4rem;
   @media only screen and (max-width: $breakpoint-sm) {
@@ -90,4 +88,25 @@ label {
 
 .absolute {
   position: absolute;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0% auto;
+}
+
+.modal {
+  z-index: 8;
+  background-color: $color-tertiary;
+  padding: 8rem 4rem;
+  @media only screen and (max-width: $breakpoint-sm) {
+    padding: 2rem 1rem;
+  }
+  @media only screen and (max-width: $breakpoint-xsm) {
+    padding: 0.5rem 0.25rem;
+  }
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
 }

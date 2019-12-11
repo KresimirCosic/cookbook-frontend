@@ -13,7 +13,9 @@ const Ingredients = () => {
 
   return (
     <div className="Page Ingredients">
-      <h1>Ingredients</h1>
+      <div className="container">
+        <h1>Ingredients</h1>
+      </div>
     </div>
   );
 };

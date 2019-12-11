@@ -4,6 +4,9 @@ import { observer } from "mobx-react";
 import useRootService from "../../shared/hooks/useRootService.hook";
 import useRootStore from "../../shared/hooks/useRootStore.hook";
 
+import IngredientCreator from "../components/ingredientCreator.component";
+import RecipeCreator from "../components/recipeCreator.component";
+
 const Home = () => {
   const { ingredientService, recipeService } = useRootService();
   const {
@@ -31,7 +34,14 @@ const Home = () => {
     };
   }, []);
 
-  return <div className="Page Home"></div>;
+  return (
+    <div className="Page Home">
+      <div className="container">
+        <IngredientCreator />
+        <RecipeCreator />
+      </div>
+    </div>
+  );
 };
 
 export default observer(Home);

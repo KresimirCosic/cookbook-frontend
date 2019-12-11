@@ -30,22 +30,13 @@ export default class IngredientService {
         } = response.data;
 
         // Adding all ingredients to the store
-        allIngredients.forEach((allIngredient, index) =>
-          // Giving some timeouts for UX
-          setTimeout(() => {
-            setTimeout(() => {
-              ingredientStore.addAllIngredient(allIngredient);
-            }, index * (INGREDIENT_ENTRY_DURATION / allIngredients.length));
-          }, LOADER_EXIT_DURATION)
+        allIngredients.forEach(allIngredient =>
+          ingredientStore.addAllIngredient(allIngredient)
         );
 
         // Adding user ingredients to the store
-        userIngredients.forEach((userIngredient, index) =>
-          setTimeout(() => {
-            setTimeout(() => {
-              ingredientStore.addUserIngredient(userIngredient);
-            }, index * (INGREDIENT_ENTRY_DURATION / userIngredients.length));
-          }, LOADER_EXIT_DURATION)
+        userIngredients.forEach(userIngredient =>
+          ingredientStore.addUserIngredient(userIngredient)
         );
       })
       .catch(error => {

@@ -19,38 +19,40 @@ const Register = () => {
 
   return (
     <div className="Page Register">
-      <form
-        onSubmit={e => {
-          e.preventDefault();
-          authenticationService.handleRegistration(username, email, password);
-        }}
-      >
-        <label htmlFor="username">Username:</label>
-        <input
-          type="text"
-          placeholder="Username"
-          id="username"
-          onChange={e => setUsername(e.target.value)}
-        />
+      <div className="container">
+        <form
+          onSubmit={e => {
+            e.preventDefault();
+            authenticationService.handleRegistration(username, email, password);
+          }}
+        >
+          <label htmlFor="username">Username:</label>
+          <input
+            type="text"
+            placeholder="Username"
+            id="username"
+            onChange={e => setUsername(e.target.value)}
+          />
 
-        <label htmlFor="email">Email:</label>
-        <input
-          type="email"
-          placeholder="Email"
-          id="email"
-          onChange={e => setEmail(e.target.value)}
-        />
+          <label htmlFor="email">Email:</label>
+          <input
+            type="email"
+            placeholder="Email"
+            id="email"
+            onChange={e => setEmail(e.target.value)}
+          />
 
-        <label htmlFor="password">Password:</label>
-        <input
-          type="text"
-          placeholder="Password"
-          id="password"
-          onChange={e => setPassword(e.target.value)}
-        />
+          <label htmlFor="password">Password:</label>
+          <input
+            type="text"
+            placeholder="Password"
+            id="password"
+            onChange={e => setPassword(e.target.value)}
+          />
 
-        <input type="submit" value="Register" />
-      </form>
+          <input type="submit" value="Register" />
+        </form>
+      </div>
     </div>
   );
 };

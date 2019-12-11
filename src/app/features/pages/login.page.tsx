@@ -18,35 +18,37 @@ const Login = () => {
 
   return (
     <div className="Page Login">
-      <form
-        onSubmit={e => {
-          e.preventDefault();
-          authenticationService.handleLogin(email, password);
-        }}
-        className="form form-login"
-      >
-        <label htmlFor="email">
-          <small>Email:</small>
-        </label>
-        <input
-          type="email"
-          placeholder="Email"
-          id="email"
-          onChange={e => setEmail(e.target.value)}
-        />
+      <div className="container">
+        <form
+          onSubmit={e => {
+            e.preventDefault();
+            authenticationService.handleLogin(email, password);
+          }}
+          className="form form-login"
+        >
+          <label htmlFor="email">
+            <small>Email:</small>
+          </label>
+          <input
+            type="email"
+            placeholder="Email"
+            id="email"
+            onChange={e => setEmail(e.target.value)}
+          />
 
-        <label htmlFor="password">
-          <small>Password:</small>
-        </label>
-        <input
-          type="password"
-          placeholder="Password"
-          id="password"
-          onChange={e => setPassword(e.target.value)}
-        />
+          <label htmlFor="password">
+            <small>Password:</small>
+          </label>
+          <input
+            type="password"
+            placeholder="Password"
+            id="password"
+            onChange={e => setPassword(e.target.value)}
+          />
 
-        <input type="submit" value="Login" />
-      </form>
+          <input type="submit" value="Login" />
+        </form>
+      </div>
     </div>
   );
 };

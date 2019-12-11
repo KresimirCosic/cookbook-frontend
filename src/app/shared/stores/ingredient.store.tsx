@@ -2,17 +2,39 @@ import { decorate, observable, computed, action } from "mobx";
 
 import RootStore from "./root.store";
 
+export interface IAllIngredient {
+  id: number;
+  name: string;
+  unit: string;
+}
+
+export interface IUserIngredient {
+  id: number;
+  name: string;
+  amount: number;
+  unit: string;
+}
+
 export default class IngredientStore {
-  userIngredients: [] = [];
+  allIngredients: IAllIngredient[] = [];
+  userIngredients: IUserIngredient[] = [];
 
   constructor(private rootStore: RootStore) {}
 
-  get totalIngredients() {
+  get totalAllIngredients() {
+    return this.allIngredients.length;
+  }
+
+  get totalUserIngredients() {
     return this.userIngredients.length;
   }
 
-  addIngredient = () => {
-    // TODO
+  addAllIngredient = (allIngredient: IAllIngredient) => {
+    this.allIngredients.push(allIngredient);
+  };
+
+  addUserIngredient = (userIngredient: IUserIngredient) => {
+    this.userIngredients.push(userIngredient);
   };
 
   updateIngredient = () => {
@@ -25,11 +47,14 @@ export default class IngredientStore {
 }
 
 decorate(IngredientStore, {
+  allIngredients: observable,
   userIngredients: observable,
 
-  totalIngredients: computed,
+  totalAllIngredients: computed,
+  totalUserIngredients: computed,
 
-  addIngredient: action,
+  addAllIngredient: action,
+  addUserIngredient: action,
   updateIngredient: action,
   deleteIngredient: action
 });

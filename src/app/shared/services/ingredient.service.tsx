@@ -1,6 +1,7 @@
 import axios, { AxiosRequestConfig } from "axios";
 
 import { rootStore } from "../stores/root.store";
+import { IAllIngredient, IUserIngredient } from "../stores/ingredient.store";
 import { RootService } from "./root.service";
 import { TARGET } from "../environment";
 
@@ -14,11 +15,25 @@ export default class IngredientService {
   constructor(private rootService: RootService) {}
 
   handleFetchingIngredients = () => {
-    console.log("Fetching all ingredients.");
     axios
       .get(`${TARGET}/api/ingredients`, requestOptions)
       .then(response => {
-        console.log(response);
+        const {
+          allIngredients,
+          userIngredients
+        }: {
+          allIngredients: IAllIngredient[];
+          userIngredients: IUserIngredient[];
+        } = response.data;
+
+        // Adding all ingredients to the store
+        allIngredients.forEach(allIngredient =>
+          ingredientStore.addAllIngredient(allIngredient)
+        );
+        // Adding user ingredients to the store
+        userIngredients.forEach(userIngredient =>
+          ingredientStore.addUserIngredient(userIngredient)
+        );
       })
       .catch(error => {
         console.log(error.response);
@@ -27,16 +42,13 @@ export default class IngredientService {
 
   handleCreatingIngredient = () => {
     // TODO
-    console.log("Creating a new ingredient.");
   };
 
   handleUpdatingIngredient = () => {
     // TODO
-    console.log("Updating an existing ingredient.");
   };
 
   handleDeletingIngredient = () => {
     // TODO
-    console.log("Deleting an existing ingredient.");
   };
 }

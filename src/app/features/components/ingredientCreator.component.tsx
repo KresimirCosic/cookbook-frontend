@@ -3,10 +3,10 @@ import { observer } from "mobx-react";
 import { CSSTransition } from "react-transition-group";
 
 import useRootStore from "../../shared/hooks/useRootStore.hook";
-import Modal from "./modal.component";
-
-const MODAL_ENTRY_DURATION = 350;
-const MODAL_EXIT_DURATION = 350;
+import Modal, {
+  MODAL_ENTRY_DURATION,
+  MODAL_EXIT_DURATION
+} from "./modal.component";
 
 const IngredientCreator: FC = () => {
   const { ingredientStore } = useRootStore();
@@ -22,7 +22,10 @@ const IngredientCreator: FC = () => {
 
   return (
     <div className="IngredientCreator">
-      <button onClick={turnOnModal}>
+      <button
+        onClick={turnOnModal}
+        className="creator-button creator-button-ingredient"
+      >
         <i className="icon-file-text2"></i>
       </button>
 

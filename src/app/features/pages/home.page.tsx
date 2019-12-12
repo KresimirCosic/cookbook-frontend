@@ -37,8 +37,10 @@ const Home = () => {
   return (
     <div className="Page Home">
       <div className="container">
-        <IngredientCreator />
-        <RecipeCreator />
+        <div className="creators-container">
+          <IngredientCreator />
+          <RecipeCreator />
+        </div>
       </div>
     </div>
   );

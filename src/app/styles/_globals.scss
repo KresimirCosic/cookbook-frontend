@@ -73,13 +73,13 @@ label {
   margin: 0% auto;
 }
 
-.Page {
-  min-height: 100vh;
-  padding: 8rem 4rem;
+.creator-button {
+  font-size: 5rem;
+  padding: 2rem;
   @media only screen and (max-width: $breakpoint-sm) {
-    padding: 2rem 1rem;
+    padding: 1rem;
   }
   @media only screen and (max-width: $breakpoint-xsm) {
-    padding: 0.5rem 0.25rem;
+    padding: 0.5rem;
   }
 }

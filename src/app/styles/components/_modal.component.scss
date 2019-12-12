@@ -1,7 +1,7 @@
 .Modal {
   z-index: 8;
   box-shadow: 0px 0px 10px 10px rgba(0, 0, 0, 0.5);
-  background-color: $color-tertiary;
+  background-color: #fff;
   padding: 8rem 4rem;
   @media only screen and (max-width: $breakpoint-sm) {
     padding: 2rem 1rem;

@@ -26,7 +26,7 @@ const RecipeCreator: FC = () => {
         onClick={turnOnModal}
         className="creator-button creator-button-recipe"
       >
-        <i className="icon-spoon-knife"></i>
+        <i className="icon-file-text2"></i>
       </button>
 
       <CSSTransition

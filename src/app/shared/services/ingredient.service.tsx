@@ -4,15 +4,12 @@ import { rootStore } from "../stores/root.store";
 import { IAllIngredient, IUserIngredient } from "../stores/ingredient.store";
 import { RootService } from "./root.service";
 import { TARGET } from "../environment";
-import { LOADER_EXIT_DURATION } from "../../features/components/loader.component";
 
 const { ingredientStore } = rootStore;
 
 const requestOptions: AxiosRequestConfig = {
   withCredentials: true
 };
-
-const INGREDIENT_ENTRY_DURATION = 350;
 
 export default class IngredientService {
   constructor(private rootService: RootService) {}

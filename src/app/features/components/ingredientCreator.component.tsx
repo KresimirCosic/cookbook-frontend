@@ -24,11 +24,12 @@ const IngredientCreator: FC = () => {
   };
 
   const turnOffModal = () => {
-    setModal(false);
     resetForm();
+    setModal(false);
   };
 
   const handleSubmit = () => {
+    console.log(newIngredient, newIngredientAmount);
     turnOffModal();
   };
 

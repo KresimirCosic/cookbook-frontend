@@ -2,14 +2,12 @@ import React, { FC, useState } from "react";
 import { observer } from "mobx-react";
 import { CSSTransition } from "react-transition-group";
 
-import useRootStore from "../../shared/hooks/useRootStore.hook";
 import Modal, {
   MODAL_ENTRY_DURATION,
   MODAL_EXIT_DURATION
 } from "./modal.component";
 
 const RecipeCreator: FC = () => {
-  const { recipeStore } = useRootStore();
   const [modal, setModal] = useState(false);
 
   const turnOnModal = () => {
@@ -40,8 +38,10 @@ const RecipeCreator: FC = () => {
         unmountOnExit
       >
         <Modal>
-          <button onClick={turnOffModal}>Cancel</button>
-          <button>Submit recipe</button>
+          <button onClick={turnOffModal} type="button">
+            Cancel
+          </button>
+          <button type="submit">Submit recipe</button>
         </Modal>
       </CSSTransition>
     </div>

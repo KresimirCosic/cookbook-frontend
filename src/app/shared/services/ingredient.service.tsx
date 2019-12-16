@@ -1,7 +1,11 @@
 import axios, { AxiosRequestConfig } from "axios";
 
 import { rootStore } from "../stores/root.store";
-import { IAllIngredient, IUserIngredient } from "../stores/ingredient.store";
+import {
+  IAllIngredient,
+  IUserIngredient,
+  IMeasure
+} from "../stores/ingredient.store";
 import { RootService } from "./root.service";
 import { TARGET } from "../environment";
 
@@ -19,12 +23,17 @@ export default class IngredientService {
       .get(`${TARGET}/api/ingredients`, requestOptions)
       .then(response => {
         const {
+          allMeasures,
           allIngredients,
           userIngredients
         }: {
+          allMeasures: IMeasure[];
           allIngredients: IAllIngredient[];
           userIngredients: IUserIngredient[];
         } = response.data;
+
+        // Adding all measures to the store
+        allMeasures.forEach(measure => ingredientStore.addMeasure(measure));
 
         // Adding all ingredients to the store
         allIngredients.forEach(allIngredient =>

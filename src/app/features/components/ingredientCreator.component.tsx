@@ -52,13 +52,15 @@ const IngredientCreator: FC = () => {
     setModal(false);
   };
 
-  const handleNewUserIngredientFormSubmit = () => {
-    console.log(newUserIngredient, newUserIngredientAmount);
+  const handleSubmit = () => {
+    if (!newIngredientEntryForm) {
+      // Creating user's new ingredient and amount
+      console.log(newUserIngredient, parseInt(newUserIngredientAmount));
+    } else {
+      // Creating completely new ingredient entry in the database
+      console.log(newIngredientEntryName, newIngredientEntryMeasure);
+    }
     turnOffModal();
-  };
-
-  const handleNewIngredientEntryFormSubmit = () => {
-    // TODO
   };
 
   const handleFormType = () => {
@@ -98,7 +100,7 @@ const IngredientCreator: FC = () => {
           <form
             onSubmit={e => {
               e.preventDefault();
-              handleNewUserIngredientFormSubmit();
+              handleSubmit();
             }}
           >
             <FormControlLabel
@@ -151,6 +153,9 @@ const IngredientCreator: FC = () => {
               <>
                 <FormControl>
                   <TextField
+                    onChange={(e: any) =>
+                      setNewIngredientEntryName(e.target.value)
+                    }
                     InputLabelProps={{ shrink: true }}
                     id="name"
                     type="text"
@@ -165,14 +170,16 @@ const IngredientCreator: FC = () => {
                     id="new-ingredient-entry-name"
                     defaultValue="default"
                     onChange={(e: any) =>
-                      setNewIngredientEntryName(e.target.value)
+                      setNewIngredientEntryMeasure(e.target.value)
                     }
                   >
                     <MenuItem value="default" disabled>
                       Choose...
                     </MenuItem>
                     {ingredientStore.measures.map(measure => (
-                      <MenuItem key={measure.id}>{measure.name}</MenuItem>
+                      <MenuItem key={measure.id} value={measure.id}>
+                        {measure.name}
+                      </MenuItem>
                     ))}
                   </Select>
                 </FormControl>
@@ -183,9 +190,7 @@ const IngredientCreator: FC = () => {
               <Button type="button" onClick={turnOffModal}>
                 Cancel
               </Button>
-              <Button type="submit" color="primary">
-                Submit
-              </Button>
+              <Button type="submit">Submit</Button>
             </div>
           </form>
         </Modal>

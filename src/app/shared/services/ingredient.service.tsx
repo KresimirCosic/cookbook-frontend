@@ -23,17 +23,17 @@ export default class IngredientService {
       .get(`${TARGET}/api/ingredients`, requestOptions)
       .then(response => {
         const {
-          allMeasures,
+          measures,
           allIngredients,
           userIngredients
         }: {
-          allMeasures: IMeasure[];
+          measures: IMeasure[];
           allIngredients: IAllIngredient[];
           userIngredients: IUserIngredient[];
         } = response.data;
 
         // Adding all measures to the store
-        allMeasures.forEach(measure => ingredientStore.addMeasure(measure));
+        measures.forEach(measure => ingredientStore.addMeasure(measure));
 
         // Adding all ingredients to the store
         allIngredients.forEach(allIngredient =>
